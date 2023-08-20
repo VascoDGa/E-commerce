@@ -36,3 +36,17 @@ export const authorise = (...requiredRoles) => asyncHandler(async (req,res,next)
     }
     next()
 })  
+
+export const getProfile = asyncHandler( async(req,res) => {
+    const {user} = req
+
+    if(!user){
+        throw new customErrors("User not found",401)
+
+    }
+
+    else
+        res.status(200).json({
+    success:true,
+    user})
+})
